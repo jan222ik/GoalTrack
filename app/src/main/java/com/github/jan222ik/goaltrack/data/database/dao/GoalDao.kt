@@ -8,11 +8,11 @@ import com.github.jan222ik.goaltrack.data.database.entities.GoalEntity
 @Dao
 abstract class GoalDao {
     @Query("SELECT * FROM GoalEntity")
-    abstract fun getAllGoals() : List<GoalEntity>
+    abstract suspend fun getAllGoals() : List<GoalEntity>
 
     @Insert
     abstract fun insertGoal(goalEntity: GoalEntity) : Long
 
     @Query("SELECT * FROM GoalEntity WHERE id = :id")
-    abstract fun getGoalById(id: Long)
+    abstract fun getGoalById(id: Long): GoalEntity
 }
